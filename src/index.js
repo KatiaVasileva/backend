@@ -1,5 +1,10 @@
 const http = require("http");
+const dotenv = require("dotenv");
 const getUsers = require("./modules/users");
+
+dotenv.config();
+
+const { PORT } = process.env;
 
 const server = http.createServer((request, response) => {
   const ipAddress = "http://127.0.0.1";
@@ -43,12 +48,12 @@ const server = http.createServer((request, response) => {
   }
 
   response.statusCode = 500;
-  response.statusMessage = "Server Failed";
+//   response.statusMessage = "Server Error";
   response.header = "Content-Type: text/plain";
   response.write("");
   response.end();
 });
 
-server.listen(3003, () => {
-  console.log("Сервер запущен по адресу http://127.0.0.1:3003");
+server.listen(PORT, () => {
+  console.log(`Сервер запущен по адресу http://127.0.0.1:${PORT}`);
 });
