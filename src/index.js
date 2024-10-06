@@ -48,7 +48,6 @@ const server = http.createServer((request, response) => {
   }
 
   response.statusCode = 500;
-//   response.statusMessage = "Server Error";
   response.header = "Content-Type: text/plain";
   response.write("");
   response.end();
